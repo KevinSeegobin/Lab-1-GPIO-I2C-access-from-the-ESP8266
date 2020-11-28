@@ -47,6 +47,7 @@ static const char *TAG = "main";
 #define GPIO_INPUT_IO_0    3
 #define GPIO_INPUT_PIN_SEL  (1ULL<<GPIO_INPUT_IO_0)
 static xQueueHandle gpio_evt_queue = NULL;
+SemaphoreHandle_t xsemaphore;
 
 static void gpio_isr_handler(void *arg)
 {
@@ -61,7 +62,7 @@ static void gpio_isr_handler(void *arg)
 
 static void gpio_task_example(void *arg)
 {
-    uint32_t io_num;
+    uint32_t io_num = 0;
 
     for (;;) 
     {
@@ -103,7 +104,6 @@ void app_main(void)
     gpio_evt_queue = xQueueCreate(10, sizeof(uint32_t));
     //start gpio 
     
-    SemaphoreHandle_t xsemaphore;
     while(xsemaphore == NULL)
     {
         xsemaphore = xSemaphoreCreateBinary();  
@@ -113,6 +113,7 @@ void app_main(void)
     xTaskCreate(gpio_task_example, "gpio_task_example", 2048, NULL, 10, NULL);
 
     //install gpio isr service
+    gpio_isr_register(gpio_isr_handler);
     //gpio_install_isr_service(0);
     //hook isr handler for specific gpio pin
     //gpio_isr_handler_add(GPIO_INPUT_IO_0, gpio_isr_handler, (void *) GPIO_INPUT_IO_0);
@@ -133,5 +134,3 @@ void app_main(void)
         gpio_set_level(GPIO_OUTPUT_IO_1, cnt % 2);
     }
 }
-
-
