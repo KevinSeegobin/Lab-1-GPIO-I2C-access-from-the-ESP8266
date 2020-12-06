@@ -21,7 +21,7 @@
 #include "esp_log.h"
 #include "esp_system.h"
 
-#include "semphr. h"
+#include "semphr.h"
 
 static const char *TAG = "main";
 
@@ -42,12 +42,12 @@ static const char *TAG = "main";
  *
  */
 
-#define GPIO_OUTPUT_IO_0   1
+#define GPIO_OUTPUT_IO_0   0
 #define GPIO_OUTPUT_PIN_SEL  (1ULL<<GPIO_OUTPUT_IO_0)
-#define GPIO_INPUT_IO_0    3
+#define GPIO_INPUT_IO_0    2
 #define GPIO_INPUT_PIN_SEL  (1ULL<<GPIO_INPUT_IO_0)
-static xQueueHandle gpio_evt_queue = NULL;
-SemaphoreHandle_t xsemaphore;
+//static xQueueHandle gpio_evt_queue = NULL;
+SemaphoreHandle_t xsemaphore = NULL;
 
 static void gpio_isr_handler(void *arg)
 {
@@ -57,7 +57,7 @@ static void gpio_isr_handler(void *arg)
 
     xSemaphoreGiveFromISR(xsemaphore, &xHigherPriorityTaskWoken);
 
-    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+    //portYIELD_FROM_ISR();
 }
 
 static void gpio_task_example(void *arg)
@@ -66,7 +66,7 @@ static void gpio_task_example(void *arg)
 
     for (;;) 
     {
-        xSemaphoreTake(xsemaphore, portMAX_DELAY);
+        if (xSemaphoreTake(xsemaphore, portMAX_DELAY))
         ESP_LOGI(TAG, "GPIO[%d] intr, val: %d\n", io_num, gpio_get_level(io_num));
     }
 }
@@ -101,22 +101,23 @@ void app_main(void)
     //gpio_set_intr_type(GPIO_INPUT_IO_0, GPIO_INTR_NEGEDGE);
 
     //create a queue to handle gpio event from isr
-    gpio_evt_queue = xQueueCreate(10, sizeof(uint32_t));
+    //gpio_evt_queue = xQueueCreate(10, sizeof(uint32_t));
     //start gpio 
     
     while(xsemaphore == NULL)
     {
+        //ESP_LOGI(TAG, "created");
         xsemaphore = xSemaphoreCreateBinary();  
     }
 
-
+    
     xTaskCreate(gpio_task_example, "gpio_task_example", 2048, NULL, 10, NULL);
 
     //install gpio isr service
-    gpio_isr_register(gpio_isr_handler);
-    //gpio_install_isr_service(0);
+    //gpio_isr_register(gpio_isr_handler, 0, NULL, 0);
+    gpio_install_isr_service(0);
     //hook isr handler for specific gpio pin
-    //gpio_isr_handler_add(GPIO_INPUT_IO_0, gpio_isr_handler, (void *) GPIO_INPUT_IO_0);
+    gpio_isr_handler_add(GPIO_INPUT_IO_0, gpio_isr_handler, (void *) GPIO_INPUT_IO_0);
     //hook isr handler for specific gpio pin
     //gpio_isr_handler_add(GPIO_INPUT_IO_1, gpio_isr_handler, (void *) GPIO_INPUT_IO_1);
 
@@ -128,9 +129,10 @@ void app_main(void)
     int cnt = 0;
 
     while (1) {
+        //ESP_LOGI(TAG, "test");
         ESP_LOGI(TAG, "cnt: %d\n", cnt++);
         vTaskDelay(1000 / portTICK_RATE_MS);
         gpio_set_level(GPIO_OUTPUT_IO_0, cnt % 2);
-        gpio_set_level(GPIO_OUTPUT_IO_1, cnt % 2);
+        //gpio_set_level(GPIO_OUTPUT_IO_1, cnt % 2);
     }
 }

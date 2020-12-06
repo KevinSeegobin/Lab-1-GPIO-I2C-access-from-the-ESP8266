@@ -1,0 +1,6 @@
+src/secure_boot_signatures.o: \
+ C:/esp/esp8266_RTOS_SDK/components/bootloader_support/src/secure_boot_signatures.c \
+ C:/esp/Lab1/gpio/build/include/sdkconfig.h
+
+C:/esp/Lab1/gpio/build/include/sdkconfig.h:
+/c/esp/esp8266_RTOS_SDK/components/bootloader_support/src/secure_boot_signatures.c:
