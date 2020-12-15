@@ -58,7 +58,7 @@ static const char *TAG = "main";
 #define ADS1115_SENSOR_ADDR                 0x48             /*!< slave address for MPU6050 sensor */
 #define CONFIGMSB                           0x42
 #define CONFIGLSB                           0x03
-//#define FS                                  4.096
+#define FS                                  4.096
 //#define MPU6050_CMD_START                   0x41             /*!< Command to set measure mode */
 //#define MPU6050_WHO_AM_I                    0x75             /*!< Command to read WHO_AM_I reg */
 #define WRITE_BIT                           I2C_MASTER_WRITE /*!< I2C master write */
@@ -236,8 +236,7 @@ static void i2c_task_example(void *arg)
         //i2c_example_ads1115_read(I2C_EXAMPLE_MASTER_NUM, CONFIGMSB, &sensor_data[0], 1);
         //i2c_example_ads1115_read(I2C_EXAMPLE_MASTER_NUM, CONFIGLSB, &sensor_data[1], 1);
 
-        //ESP_LOGI(TAG, "val1: %d\n", sensor_data[0]);
-        //ESP_LOGI(TAG, "val2: %d\n", sensor_data[1]);
+        ESP_LOGI(TAG, "configreg: %X%X\n", sensor_data[0], sensor_data[1]);
 
         ret = i2c_example_ads1115_read(I2C_EXAMPLE_MASTER_NUM, CONVERSION, sensor_data, 2);
 
@@ -257,8 +256,8 @@ static void i2c_task_example(void *arg)
             //ESP_LOGI(TAG, "val2: %d\n", sensor_data[1]);
             //ESP_LOGI(TAG, "TEST UINT: %d\n", (int16_t)((int8_t)test));
             //ESP_LOGI(TAG, "TEST UINT: %d\n", (int8_t)test);
-            temp = ((uint16_t)sensor_data[0] << 8) | sensor_data[1];
-            v = (temp * 4.096)/32768; 
+            temp = (int16_t)(((uint16_t)sensor_data[0] << 8) | sensor_data[1]);
+            v = (temp * FS)/32768; 
 
             ESP_LOGI(TAG, "TEMP: %d\n", temp);
             ESP_LOGI(TAG, "TEMP: %d.%d\n", (uint32_t)v, (uint32_t)(v*100)%100);
