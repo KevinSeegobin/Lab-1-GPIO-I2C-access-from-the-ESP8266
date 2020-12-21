@@ -1,0 +1,78 @@
+
+ ets Jan  8 2013,rst cause:2, boot mode:(3,7)
+
+load 0x40100000, len 7144, room 16
+tail 8
+chksum 0x80
+load 0x3ffe8408, len 24, room 0
+tail 8
+chksum 0x09
+load 0x3ffe8420, len 3336, room 0
+tail 8
+chksum 0x19
+I (46) boot: ESP-IDF v3.4-dev-363-gdda5062c-dirty 2nd stage bootloader
+I (46) boot: compile time 19:29:05
+I (47) qio_mode: Enabling default flash chip QIO
+I (55) boot: SPI Speed      : 40MHz
+I (62) boot: SPI Mode       : QIO
+I (68) boot: SPI Flash Size : 2MB
+I (74) boot: Partition Table:
+I (79) boot: ## Label            Usage          Type ST Offset   Length
+I (91) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (102) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (114) boot:  2 factory          factory app      00 00 00010000 000f0000
+I (125) boot: End of partition table
+I (132) esp_image: segment 0: paddr=0x00010010 vaddr=0x40210010 size=0x14710 ( 8                                                                             3728) map
+I (173) esp_image: segment 1: paddr=0x00024728 vaddr=0x40224720 size=0x05780 ( 2                                                                             2400) map
+I (181) esp_image: segment 2: paddr=0x00029eb0 vaddr=0x3ffe8000 size=0x003dc (                                                                                988) load
+I (185) esp_image: segment 3: paddr=0x0002a294 vaddr=0x40100000 size=0x00080 (                                                                                128) load
+I (198) esp_image: segment 4: paddr=0x0002a31c vaddr=0x40100080 size=0x0451c ( 1                                                                             7692) load
+I (217) boot: Loaded app from partition at offset 0x10000
+I (236) gpio: GPIO[0]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldow                                                                             n: 0| Intr:0
+I (241) gpio: GPIO[2]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldow                                                                             n: 0| Intr:2
+I (253) main: cnt: 0
+
+I (1251) main: cnt: 1
+
+I (2251) main: cnt: 2
+
+I (3251) main: cnt: 3
+
+I (4251) main: cnt: 4
+
+I (5251) main: cnt: 5
+
+I (6251) main: cnt: 6
+
+I (6253) main: GPIO[0] intr, val: 0
+
+I (7251) main: cnt: 7
+
+I (8251) main: cnt: 8
+
+I (8252) main: GPIO[0] intr, val: 0
+
+I (9251) main: cnt: 9
+
+I (10252) main: cnt: 10
+
+I (10254) main: GPIO[0] intr, val: 0
+
+I (11252) main: cnt: 11
+
+I (12252) main: cnt: 12
+
+I (13252) main: cnt: 13
+
+I (14252) main: cnt: 14
+
+I (14254) main: GPIO[0] intr, val: 0
+
+I (15252) main: cnt: 15
+
+I (16252) main: cnt: 16
+
+I (17252) main: cnt: 17
+
+I (18252) main: cnt: 18
+
