@@ -15,7 +15,7 @@
 
 void app_main()
 {
-    printf("Hello Kevin Seegobin\n You're ID number is: 816014799");
+    printf("Hello Kevin Seegobin\n You're ID number is: 816014799\n");
 
     /* Print chip information */
     esp_chip_info_t chip_info;
