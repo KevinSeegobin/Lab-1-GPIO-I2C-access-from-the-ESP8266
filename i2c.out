@@ -1,0 +1,172 @@
+
+ ets Jan  8 2013,rst cause:2, boot mode:(3,7)
+
+load 0x40100000, len 7144, room 16
+tail 8
+chksum 0x80
+load 0x3ffe8408, len 24, room 0
+tail 8
+chksum 0x09
+load 0x3ffe8420, len 3336, room 0
+tail 8
+chksum 0x12
+I (46) boot: ESP-IDF v3.4-dev-363-gdda5062c-dirty 2nd stage bootloader
+I (46) boot: compile time 19:50:55
+I (47) qio_mode: Enabling default flash chip QIO
+I (55) boot: SPI Speed      : 40MHz
+I (62) boot: SPI Mode       : QIO
+I (68) boot: SPI Flash Size : 2MB
+I (74) boot: Partition Table:
+I (79) boot: ## Label            Usage          Type ST Offset   Length
+I (91) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (102) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (114) boot:  2 factory          factory app      00 00 00010000 000f0000
+I (125) boot: End of partition table
+I (132) esp_image: segment 0: paddr=0x00010010 vaddr=0x40210010 size=0x15884 ( 8                                                                             8196) map
+I (175) esp_image: segment 1: paddr=0x0002589c vaddr=0x40225894 size=0x05a50 ( 2                                                                             3120) map
+I (183) esp_image: segment 2: paddr=0x0002b2f4 vaddr=0x3ffe8000 size=0x003dc (                                                                                988) load
+I (186) esp_image: segment 3: paddr=0x0002b6d8 vaddr=0x40100000 size=0x00080 (                                                                                128) load
+I (200) esp_image: segment 4: paddr=0x0002b760 vaddr=0x40100080 size=0x044bc ( 1                                                                             7596) load
+I (219) boot: Loaded app from partition at offset 0x10000
+I (332) gpio: GPIO[0]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 1| Pulldow                                                                             n: 0| Intr:0
+I (334) gpio: GPIO[2]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 1| Pulldow                                                                             n: 0| Intr:0
+I (346) main: *******************
+
+I (352) main: Voltage: 0.0
+
+I (452) main: *******************
+
+I (453) main: Voltage: 2.14
+
+I (552) main: *******************
+
+I (553) main: Voltage: 2.14
+
+I (652) main: *******************
+
+I (653) main: Voltage: 2.14
+
+I (752) main: *******************
+
+I (753) main: Voltage: 2.14
+
+I (852) main: *******************
+
+I (853) main: Voltage: 2.17
+
+I (952) main: *******************
+
+I (953) main: Voltage: 2.23
+
+I (1052) main: *******************
+
+I (1053) main: Voltage: 2.26
+
+I (1152) main: *******************
+
+I (1153) main: Voltage: 2.29
+
+I (1252) main: *******************
+
+I (1253) main: Voltage: 2.33
+
+I (1352) main: *******************
+
+I (1353) main: Voltage: 2.44
+
+I (1452) main: *******************
+
+I (1453) main: Voltage: 2.50
+
+I (1552) main: *******************
+
+I (1553) main: Voltage: 2.58
+
+I (1652) main: *******************
+
+I (1653) main: Voltage: 2.65
+
+I (1752) main: *******************
+
+I (1753) main: Voltage: 2.67
+
+I (1852) main: *******************
+
+I (1853) main: Voltage: 2.66
+
+I (1952) main: *******************
+
+I (1953) main: Voltage: 2.62
+
+I (2052) main: *******************
+
+I (2053) main: Voltage: 2.59
+
+I (2152) main: *******************
+
+I (2153) main: Voltage: 2.56
+
+I (2252) main: *******************
+
+I (2253) main: Voltage: 2.54
+
+I (2352) main: *******************
+
+I (2353) main: Voltage: 2.51
+
+I (2452) main: *******************
+
+I (2453) main: Voltage: 2.38
+
+I (2552) main: *******************
+
+I (2553) main: Voltage: 1.87
+
+I (2652) main: *******************
+
+I (2653) main: Voltage: 1.89
+
+I (2752) main: *******************
+
+I (2753) main: Voltage: 1.90
+
+I (2852) main: *******************
+
+I (2853) main: Voltage: 1.90
+
+I (2952) main: *******************
+
+I (2953) main: Voltage: 1.90
+
+I (3052) main: *******************
+
+I (3053) main: Voltage: 1.90
+
+I (3152) main: *******************
+
+I (3153) main: Voltage: 1.90
+
+I (3252) main: *******************
+
+I (3253) main: Voltage: 1.90
+
+I (3352) main: *******************
+
+I (3353) main: Voltage: 1.90
+
+I (3452) main: *******************
+
+I (3453) main: Voltage: 1.90
+
+I (3552) main: *******************
+
+I (3553) main: Voltage: 1.90
+
+I (3652) main: *******************
+
+I (3653) main: Voltage: 1.90
+
+I (3752) main: *******************
+
+I (3753) main: Voltage: 1.90
+
